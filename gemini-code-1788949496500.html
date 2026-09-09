@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Tiếng Anh - Ms Lê Hằng English</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #8854C0, #FDCB6E, #00C9A7, #FF7675, #6C5CE7);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 20px 10px 60px 10px;
+            color: #2d3436;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* SVG Background Patterns Overlay */
+        .bg-patterns {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.25;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23FFFFFF"><path d="M20 10l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/><circle cx="80" cy="30" r="8"/><path d="M100 80c0 5-5 10-10 10s-10-5-10-10 5-10 10-10 10 5 10 10z"/><path d="M30 90l5-10 10 5-5 10z"/><path d="M70 100l2 4 4 2-4 2-2 4-2-4-4-2 4-2z"/></g></svg>');
+            animation: floatPatterns 20s linear infinite;
+        }
+
+        @keyframes floatPatterns {
+            from { background-position: 0 0; }
+            to { background-position: 120px 240px; }
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Style */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .teacher-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #6C5CE7;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            margin-bottom: 10px;
+            border: 2px solid #6C5CE7;
+            transform: rotate(-1deg);
+        }
+
+        .main-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 2px 3px 0px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
+        }
+
+        /* Important Reminder Box */
+        .reminder-card {
+            background: #FFF9E6;
+            border: 3px solid #FFEAA7;
+            border-left: 8px solid #FDCB6E;
+            border-radius: 18px;
+            padding: 16px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .reminder-title {
+            color: #D63031;
+            font-weight: 900;
+            font-size: 17px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .reminder-text {
+            color: #2d3436;
+            font-size: 14.5px;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+
+        .reminder-highlight {
+            display: block;
+            margin-top: 8px;
+            color: #6C5CE7;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        /* Question Cards */
+        .question-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border: 3px solid #F0F0F0;
+            transition: transform 0.2s ease;
+            position: relative;
+        }
+
+        .q-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            border-bottom: 2px dashed #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .q-number {
+            background: #6C5CE7;
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 4px 14px;
+            border-radius: 12px;
+            box-shadow: 0 3px 0 #4b38b3;
+        }
+
+        .q-type {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #b2bec3;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .q-text {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .q-text u {
+            color: #e84393;
+            font-weight: 900;
+            text-decoration-color: #e84393;
+            text-decoration-thickness: 3px;
+            padding: 0 2px;
+        }
+
+        /* Option Grid / Buttons */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .opt-btn {
+            background: #F8F9FA;
+            border: 2px solid #E9ECEF;
+            border-bottom: 5px solid #DEE2E6;
+            border-radius: 18px;
+            padding: 13px 16px;
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #495057;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            outline: none;
+            user-select: none;
+        }
+
+        .opt-btn:hover:not([disabled]) {
+            transform: translateY(-2px) scale(1.01);
+            background: #EDF2F7;
+            border-color: #CBD5E0;
+        }
+
+        .opt-btn:active:not([disabled]) {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+        }
+
+        .opt-prefix {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #E2E8F0;
+            color: #4A5568;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* Correct & Wrong States */
+        .opt-btn.correct {
+            background: #E6F9F0 !important;
+            border-color: #00D26A !important;
+            border-bottom: 5px solid #00A852 !important;
+            color: #007A3D !important;
+        }
+        .opt-btn.correct .opt-prefix {
+            background: #00D26A !important;
+            color: white !important;
+        }
+
+        .opt-btn.wrong {
+            background: #FFEAEA !important;
+            border-color: #FF4757 !important;
+            border-bottom: 5px solid #D63031 !important;
+            color: #C0392B !important;
+            animation: shake 0.4s ease;
+        }
+        .opt-btn.wrong .opt-prefix {
+            background: #FF4757 !important;
+            color: white !important;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        /* Explanation Box */
+        .explanation-box {
+            display: none;
+            margin-top: 18px;
+            background: #F3F0FF;
+            border: 2px dashed #9B51E0;
+            border-radius: 18px;
+            padding: 16px 18px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .explanation-box.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .exp-head {
+            font-weight: 900;
+            color: #6C5CE7;
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .exp-section {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.55;
+            color: #2d3436;
+        }
+
+        .exp-section strong {
+            color: #6C5CE7;
+        }
+
+        .exp-list {
+            margin-left: 12px;
+            list-style: none;
+        }
+
+        .exp-list li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .exp-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #8854C0;
+            font-weight: bold;
+        }
+
+        /* Submit Bar & Modal */
+        .submit-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .submit-btn {
+            background: #00D26A;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            padding: 16px 45px;
+            border: none;
+            border-bottom: 6px solid #00A852;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 210, 106, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            background: #00E676;
+        }
+
+        .submit-btn:active {
+            transform: translateY(3px);
+            border-bottom-width: 2px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: white;
+            border-radius: 28px;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 4px solid #6C5CE7;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-score {
+            font-size: 48px;
+            font-weight: 900;
+            color: #6C5CE7;
+            margin: 10px 0;
+        }
+
+        .modal-msg {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2d3436;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            background: #F8F9FA;
+            padding: 16px;
+            border-radius: 16px;
+            border-left: 5px solid #6C5CE7;
+        }
+
+        .close-modal-btn {
+            background: #6C5CE7;
+            color: white;
+            border: none;
+            border-bottom: 4px solid #4b38b3;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-patterns"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="container">
+        <header>
+            <div class="teacher-badge">👩‍🏫 Giáo viên tạo: Ms Lê Hằng English</div>
+            <h1 class="main-title">🎯 BÀI KIỂM TRA TIẾNG ANH TƯƠNG TÁC</h1>
+        </header>
+
+        <div class="reminder-card">
+            <div class="reminder-title">
+                <span>⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️</span>
+            </div>
+            <div class="reminder-text">
+                Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+                Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!
+                <span class="reminder-highlight">* Kéo tới đâu, làm tới đó! *</span>
+            </div>
+        </div>
+
+        <div id="quiz-container"></div>
+
+        <div class="submit-container">
+            <button class="submit-btn" onclick="submitQuiz()">NỘP BÀI THI 🚀</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="result-modal">
+        <div class="modal-card">
+            <div style="font-size: 50px;">🏆</div>
+            <h2 style="font-weight: 900; color:#2d3436;">KẾT QUẢ BÀI LÀM</h2>
+            <div class="modal-score" id="score-text">0 / 20</div>
+            <div class="modal-msg" id="comment-text">...</div>
+            <button class="close-modal-btn" onclick="closeModal()">ĐÓNG VÀ XEM LẠI BÀI 📝</button>
+        </div>
+    </div>
+
+    <script>
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) audioCtx = new AudioContext();
+        }
+
+        function playSound(type) {
+            try {
+                initAudio();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                if (type === 'correct') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1318.51, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.4);
+                } else if (type === 'wrong') {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+                    osc.frequency.setValueAtTime(160, audioCtx.currentTime + 0.15);
+                    osc.frequency.setValueAtTime(110, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.45);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.45);
+                }
+            } catch (e) {
+                console.log("Audio waiting for user gesture", e);
+            }
+        }
+
+        const rawQuestions = [
+            // Question 5
+            {
+                type: "VOCABULARY - ADJECTIVES",
+                question: "Question 5. Even when challenges arise, it's important to stay ________ and believe things will improve.",
+                options: [
+                    { text: "pessimistic", correct: false },
+                    { text: "well-balanced", correct: false },
+                    { text: "optimistic", correct: true },
+                    { text: "stressed out", correct: false }
+                ],
+                explanation: {
+                    translation: "Ngay cả khi khó khăn xảy ra, điều quan trọng là phải giữ tinh thần lạc quan và tin rằng mọi thứ sẽ tốt hơn.",
+                    optionsDict: [
+                        "A. pessimistic (adj): bi quan",
+                        "B. well-balanced (adj): cân bằng",
+                        "C. optimistic (adj): lạc quan",
+                        "D. stressed out (adj): căng thẳng, mệt mỏi"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì 'optimistic' (lạc quan) phù hợp nhất với vế sau 'believe things will improve' (tin tưởng mọi chuyện sẽ tốt lên).",
+                    whyIncorrect: "A trái ngược hoàn toàn về nghĩa; B không hợp ngữ cảnh; D mang nghĩa tiêu cực."
+                }
+            },
+            // Question 6
+            {
+                type: "GRAMMAR - PAST CONTINUOUS VS PAST SIMPLE",
+                question: "Question 6. While the archaeologists ________ the ancient site, they discovered a magnificent relic.",
+                options: [
+                    { text: "explore", correct: false },
+                    { text: "explored", correct: false },
+                    { text: "were exploring", correct: true },
+                    { text: "had explore", correct: false }
+                ],
+                explanation: {
+                    translation: "Trong khi các nhà khảo cổ đang khám phá di chỉ cổ đại, họ đã phát hiện ra một cổ vật tuyệt đẹp.",
+                    optionsDict: [
+                        "A. explore (Hiện tại đơn)",
+                        "B. explored (Quá khứ đơn)",
+                        "C. were exploring (Quá khứ tiếp diễn)",
+                        "D. had explore (Sai ngữ pháp)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì cấu trúc: `While + Thì Quá khứ tiếp diễn` diễn tả hành động đang xảy ra trong quá khứ thì có hành động khác cắt ngang (diễn tả bằng Quá khứ đơn 'discovered').",
+                    whyIncorrect: "A, B, D không đáp ứng đúng cấu trúc phối hợp thì với liên từ 'While' chỉ hành động đang diễn ra."
+                }
+            },
+            // Question 7
+            {
+                type: "VOCABULARY - PHRASAL VERBS",
+                question: "Question 7. Mira said she ________ pickle ball so that she could meet more interesting people.",
+                options: [
+                    { text: "got on with", correct: false },
+                    { text: "looked up", correct: false },
+                    { text: "got back", correct: false },
+                    { text: "took up", correct: true }
+                ],
+                explanation: {
+                    translation: "Mira nói rằng cô ấy đã bắt đầu chơi môn pickleball để có thể gặp gỡ thêm nhiều người thú vị.",
+                    optionsDict: [
+                        "A. got on with (phr v): hòa hợp với ai",
+                        "B. looked up (phr v): tra cứu (từ điển)",
+                        "C. got back (phr v): quay trở lại",
+                        "D. took up (phr v): bắt đầu một sở thích/môn thể thao"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì cụm từ 'take up + sport/hobby' có nghĩa là bắt đầu chơi một môn thể thao hoặc theo đuổi một sở thích mới.",
+                    whyIncorrect: "A, B, C không đi với tên môn thể thao để tạo thành nghĩa thích hợp."
+                }
+            },
+            // Question 8
+            {
+                type: "COMMUNICATION / DIALOGUE",
+                question: "Question 8. Anna and Bob are talking in a noisy class.<br>Anna: \"How many hours of sleep do teens need?\"<br>Bob: \"Sorry, could you repeat the question? ________\"",
+                options: [
+                    { text: "I didn't catch what you said.", correct: true },
+                    { text: "I beg your pardon?", correct: false },
+                    { text: "I didn't know anything about that", correct: false },
+                    { text: "I misunderstand what you mean", correct: false }
+                ],
+                explanation: {
+                    translation: "Anna và Bob đang nói chuyện trong một lớp học ồn ào.<br>Anna: \"Thanh thiếu niên cần ngủ bao nhiêu tiếng một ngày?\"<br>Bob: \"Xin lỗi, bạn có thể nhắc lại câu hỏi không? Tớ không nghe rõ những gì bạn nói.\"",
+                    optionsDict: [
+                        "A. I didn't catch what you said. (Tớ không nghe kịp/rõ những gì bạn nói - Nêu lý do thỏa đáng)",
+                        "B. I beg your pardon? (Câu dùng để hỏi lại, nhưng Bob đã hỏi 'could you repeat...?' rồi nên bị lặp lại)",
+                        "C. I didn't know anything about that (Tớ không biết gì về điều đó)",
+                        "D. I misunderstand what you mean (Tớ hiểu nhầm ý bạn)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì 'I didn't catch what you said' giải thích lý do không nghe rõ câu hỏi vì lớp quá ồn.",
+                    whyIncorrect: "B gây lặp lại câu hỏi; C và D không phải lý do do tiếng ồn gây ra."
+                }
+            },
+            // Question 9
+            {
+                type: "GRAMMAR - QUESTION WORD + TO-INFINITIVE",
+                question: "Question 9. She wondered ________ to start her presentation about teen stress and pressure.",
+                options: [
+                    { text: "what", correct: false },
+                    { text: "who", correct: false },
+                    { text: "how", correct: true },
+                    { text: "where", correct: false }
+                ],
+                explanation: {
+                    translation: "Cô ấy băn khoăn không biết làm thế nào để bắt đầu bài thuyết trình của mình về sự căng thẳng và áp lực tuổi teen.",
+                    optionsDict: [
+                        "A. what (cái gì)",
+                        "B. who (ai)",
+                        "C. how (làm thế nào, cách thức)",
+                        "D. where (ở đâu)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì cấu trúc 'wonder + HOW + to-V' diễn tả sự thắc mắc về cách thức thực hiện một hành động (cách bắt đầu bài thuyết trình).",
+                    whyIncorrect: "A, B, D không tạo thành nghĩa hợp lý khi nói về cách khởi đầu một bài phát biểu."
+                }
+            },
+            // Question 10
+            {
+                type: "GRAMMAR - PRESENT PERFECT TENSE",
+                question: "Question 10. I ________ never ________ in such an embarrassing situation before.",
+                options: [
+                    { text: "hasn't - been", correct: false },
+                    { text: "haven't - been", correct: false },
+                    { text: "have - been", correct: true },
+                    { text: "has - been", correct: false }
+                ],
+                explanation: {
+                    translation: "Tôi chưa bao giờ rơi vào tình huống xấu hổ như thế này trước đây.",
+                    optionsDict: [
+                        "A. hasn't - been (Sai chủ ngữ I)",
+                        "B. haven't - been (Thừa phủ định vì đã có từ 'never')",
+                        "C. have - been (Đúng thì Hiện tại hoàn thành đi với 'never')",
+                        "D. has - been (Sai chủ ngữ I)"
+                    ],
+                    whyCorrect: "Đáp án C đúng vì với chủ ngữ 'I', thì Hiện tại hoàn thành trải nghiệm dùng `have + never + V3/V-ed` ('have never been'). Đã có 'never' thì không dùng 'haven't'.",
+                    whyIncorrect: "A và D dùng 'has' sai với 'I'; B bị lặp từ phủ định (haven't never)."
+                }
+            },
+            // Question 11
+            {
+                type: "GRAMMAR - WISH CLAUSES",
+                question: "Question 11. My mum ________ buses ________ so overcrowded during the rush hours.",
+                options: [
+                    { text: "wishes - are not", correct: false },
+                    { text: "wishes – won't be", correct: false },
+                    { text: "wish – were not", correct: false },
+                    { text: "wishes – were not", correct: true }
+                ],
+                explanation: {
+                    translation: "Mẹ tôi ước gì xe buýt không quá đông đúc vào các giờ cao điểm.",
+                    optionsDict: [
+                        "A. wishes - are not (Chưa lùi thì)",
+                        "B. wishes – won't be (Sai thì của mệnh đề ước ở hiện tại)",
+                        "C. wish – were not (Sai chia động từ 'wish' với chủ ngữ 'My mum')",
+                        "D. wishes – were not (Đúng cấu trúc câu ước ở hiện tại)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì chủ ngữ 'My mum' số ít đi với 'wishes'. Mệnh đề ước trái với thực tế hiện tại dùng Thì Quá khứ đơn (`were not`).",
+                    whyIncorrect: "A chưa lùi thì; B sai dạng tương lai; C chưa chia động từ 'wish' theo chủ ngữ số ít."
+                }
+            },
+            // Question 12
+            {
+                type: "VOCABULARY - NOUNS",
+                question: "Question 12. To stay healthy, it's important to set a clear ________, like exercising daily or eating more vegetables.",
+                options: [
+                    { text: "distraction", correct: false },
+                    { text: "priority", correct: true },
+                    { text: "gratitude", correct: false },
+                    { text: "anniversary", correct: false }
+                ],
+                explanation: {
+                    translation: "Để giữ sức khỏe, điều quan trọng là phải thiết lập một sự ưu tiên rõ ràng, như tập thể dục hàng ngày hoặc ăn nhiều rau hơn.",
+                    optionsDict: [
+                        "A. distraction (n): sự xao nhãng",
+                        "B. priority (n): sự ưu tiên / mục tiêu ưu tiên",
+                        "C. gratitude (n): lòng biết ơn",
+                        "D. anniversary (n): ngày kỷ niệm"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì cụm 'set a clear priority' nghĩa là đặt ra thứ tự ưu tiên rõ ràng trong cuộc sống.",
+                    whyIncorrect: "A, C, D không mang ý nghĩa lựa chọn việc quan trọng cần làm để bảo vệ sức khỏe."
+                }
+            },
+            // Question 13
+            {
+                type: "ANNOUNCEMENT - ARTICLES",
+                question: "Question 13. Join us for the Healthy Living for Teens Workshop, designed to help you make simple, effective changes for (13)________ healthier lifestyle.",
+                options: [
+                    { text: "an", correct: false },
+                    { text: "a", correct: true },
+                    { text: "the", correct: false },
+                    { text: "no article", correct: false }
+                ],
+                explanation: {
+                    translation: "Hãy tham gia xưởng Kỹ năng Sống Khỏe dành cho Tuổi Teen, được thiết kế để giúp bạn tạo ra những thay đổi đơn giản, hiệu quả cho một lối sống lành mạnh hơn.",
+                    optionsDict: [
+                        "A. an (trước nguyên âm)",
+                        "B. a (mạo từ không xác định số ít trước phụ âm)",
+                        "C. the (mạo từ xác định)",
+                        "D. no article (không dùng mạo từ)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì 'lifestyle' là danh từ đếm được số ít, tính từ bổ nghĩa 'healthier' bắt đầu bằng âm phụ /h/ nên ta dùng mạo từ 'a'.",
+                    whyIncorrect: "A sai âm đầu; C sai vì đây là danh từ được nhắc tới chung chung; D thiếu mạo từ cho danh từ số ít."
+                }
+            },
+            // Question 14
+            {
+                type: "ANNOUNCEMENT - IMPERATIVE VERBS",
+                question: "Question 14. Stay Active: (14)________ fun ways to exercise and stay fit.",
+                options: [
+                    { text: "Complete", correct: false },
+                    { text: "Discover", correct: true },
+                    { text: "Prohibit", correct: false },
+                    { text: "Challenge", correct: false }
+                ],
+                explanation: {
+                    translation: "Duy trì hoạt động: Khám phá những cách thú vị để tập thể dục và giữ dáng.",
+                    optionsDict: [
+                        "A. Complete (v): hoàn thành",
+                        "B. Discover (v): khám phá, tìm hiểu",
+                        "C. Prohibit (v): cấm đoán",
+                        "D. Challenge (v): thách thức"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì động từ mệnh lệnh 'Discover' (Khám phá) rất phù hợp cho mục giới thiệu hoạt động thu hút người tham gia.",
+                    whyIncorrect: "A, C, D không phù hợp nét nghĩa khuyến khích trải nghiệm hoạt động thể thao."
+                }
+            },
+            // Question 15
+            {
+                type: "ANNOUNCEMENT - PREPOSITIONS",
+                question: "Question 15. Hear (15)________ health experts and ask your questions.",
+                options: [
+                    { text: "from", correct: true },
+                    { text: "in", correct: false },
+                    { text: "at", correct: false },
+                    { text: "on", correct: false }
+                ],
+                explanation: {
+                    translation: "Lắng nghe từ các chuyên gia sức khỏe và đặt câu hỏi của bạn.",
+                    optionsDict: [
+                        "A. from (prep): từ ai (hear from = lắng nghe từ)",
+                        "B. in (prep): trong",
+                        "C. at (prep): tại",
+                        "D. on (prep): trên"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì cấu trúc động từ 'hear from somebody' nghĩa là lắng nghe ý kiến, thông tin chia sẻ từ ai đó.",
+                    whyIncorrect: "B, C, D không ghép với động từ 'hear' để chỉ việc tiếp nhận chia sẻ từ chuyên gia."
+                }
+            },
+            // Question 16
+            {
+                type: "ANNOUNCEMENT - IMPERATIVE PHRASES",
+                question: "Question 16. (16)________ make healthy living simple and fun!",
+                options: [
+                    { text: "Let's", correct: true },
+                    { text: "Let", correct: false },
+                    { text: "Lets", correct: false },
+                    { text: "Lets'", correct: false }
+                ],
+                explanation: {
+                    translation: "Hãy cùng làm cho lối sống lành mạnh trở nên đơn giản và vui vẻ!",
+                    optionsDict: [
+                        "A. Let's (viết tắt của Let us - Hãy cùng nhau...)",
+                        "B. Let (động từ nguyên mẫu)",
+                        "C. Lets (động từ chia số ít ngôi thứ 3)",
+                        "D. Lets' (sai chính tả)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì lời kêu gọi hưởng ứng đứng đầu câu 'Let's + V-bare' (Hãy cùng làm gì).",
+                    whyIncorrect: "B, C, D không phải là cụm từ kêu gọi nhóm chuẩn xác."
+                }
+            },
+            // Question 17
+            {
+                type: "TEXT ORDERING - LOGICAL SEQUENCE",
+                question: "Question 17. Put the sentences (a-c) in the correct order, then fill in the blank to make a logical text.<br><em>\"We decided to spend the weekend exploring the local museum. It was an exciting experience for all of us. ________\"</em><br>a. After exploring the exhibits, we attended a live demonstration of traditional crafts.<br>b. We arrived early and started with a tour of the ancient artifacts displayed in the main hall.<br>c. The museum also had a section dedicated to modern art, which was quite fascinating.",
+                options: [
+                    { text: "b - a - c", correct: true },
+                    { text: "a - c - b", correct: false },
+                    { text: "c - b - a", correct: false },
+                    { text: "b - c - a", correct: false }
+                ],
+                explanation: {
+                    translation: "Sắp xếp các câu (a-c) theo thứ tự thời gian hợp lý khi tham quan bảo tàng:",
+                    optionsDict: [
+                        "A. b - a - c (Đúng mốc diễn biến hoạt động)",
+                        "B. a - c - b",
+                        "C. c - b - a",
+                        "D. b - c - a"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì mạch diễn biến tự nhiên:<br>1. (b) Đến sớm và bắt đầu tham quan cổ vật ở sảnh chính.<br>2. (a) Sau khi xem triển lãm, tham dự buổi trình diễn làm đồ thủ công.<br>3. (c) Bảo tàng cũng có khu vực nghệ thuật hiện đại rất thu hút.",
+                    whyIncorrect: "B, C, D xáo trộn hành động 'Đến sớm' (b) hoặc 'Sau khi khám phá' (a)."
+                }
+            },
+            // Question 18
+            {
+                type: "TEXT ENDING - CONCLUSION",
+                question: "Question 18. Choose the sentence that can end the text (in Question 17) most appropriately:",
+                options: [
+                    { text: "We left the museum feeling inspired and eager to learn more about our cultural heritage.", correct: true },
+                    { text: "After the demonstration, we realized we were too tired to continue exploring.", correct: false },
+                    { text: "Everyone was disappointed that we couldn't see the entire museum due to the time limit.", correct: false },
+                    { text: "The experience was great, but we wish there had been more modern exhibits.", correct: false }
+                ],
+                explanation: {
+                    translation: "Chọn câu kết bài viết tham quan bảo tàng một cách phù hợp nhất:",
+                    optionsDict: [
+                        "A. Chúng tôi rời bảo tàng trong sự tràn đầy cảm hứng và khao khát tìm hiểu thêm về di sản văn hóa.",
+                        "B. Cả nhóm cảm thấy quá mệt mỏi - Tiêu cực",
+                        "C. Mọi người đều thất vọng - Tiêu cực",
+                        "D. Ước gì có nhiều đồ hiện đại hơn - Không phù hợp mở đầu câu chuyện"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì câu kết đúc kết được cảm xúc tích cực, truyền cảm hứng sau một chuyến đi hào hứng ('exciting experience').",
+                    whyIncorrect: "B và C mang sắc thái thất vọng mệt mỏi mâu thuẫn với tinh thần chuyến đi; D không tôn vinh di sản văn hóa."
+                }
+            },
+            // Question 19
+            {
+                type: "READING CLOZE - ADJECTIVES",
+                question: "Question 19. Last summer, my friends and I had an (19)________ experience in the mountains of Northern Vietnam.",
+                options: [
+                    { text: "unforgettable", correct: true },
+                    { text: "forgettable", correct: false },
+                    { text: "forget", correct: false },
+                    { text: "forgetting", correct: false }
+                ],
+                explanation: {
+                    translation: "Mùa hè năm ngoái, tôi và các bạn đã có một trải nghiệm không thể nào quên ở vùng núi phía Bắc Việt Nam.",
+                    optionsDict: [
+                        "A. unforgettable (adj): không thể quên, đáng nhớ",
+                        "B. forgettable (adj): dễ quên, tầm thường",
+                        "C. forget (v): quên",
+                        "D. forgetting (v-ing): việc quên"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì tính từ 'unforgettable' phù hợp với mạch cảm xúc ca ngợi chuyến đi tuyệt vời ('truly amazing adventure').",
+                    whyIncorrect: "B mang nghĩa tiêu cực (dễ quên); C và D sai từ loại tính từ đứng trước danh từ 'experience'."
+                }
+            },
+            // Question 20
+            {
+                type: "READING CLOZE - ADVERB + ADJECTIVE",
+                question: "Question 20. The air was fresh, and the scenery was (20)________.",
+                options: [
+                    { text: "absolutely beautiful", correct: true },
+                    { text: "beautiful absolutely", correct: false },
+                    { text: "beautifully absolute", correct: false },
+                    { text: "absolutely beauty", correct: false }
+                ],
+                explanation: {
+                    translation: "Không khí thật trong lành, và phong cảnh thì vô cùng xinh đẹp.",
+                    optionsDict: [
+                        "A. absolutely beautiful (Trạng từ + Tính từ đứng sau 'was')",
+                        "B. beautiful absolutely (Sai vị trí trạng từ)",
+                        "C. beautifully absolute (Sai từ loại tính/trạng)",
+                        "D. absolutely beauty (Sai từ loại danh từ)"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì cấu trúc trật từ từ loại đứng sau động từ to be 'was': `Trạng từ (absolutely) + Tính từ (beautiful)`.",
+                    whyIncorrect: "B, C, D sắp xếp sai vị trí hoặc dùng sai từ loại tính/trạng/danh từ."
+                }
+            },
+            // Question 21
+            {
+                type: "READING CLOZE - CLAUSES",
+                question: "Question 21. They showed us (21)________ their traditional clothing and allowed us to try some of their delicious homemade dishes.",
+                options: [
+                    { text: "what they make", correct: false },
+                    { text: "how they make", correct: true },
+                    { text: "why they make", correct: false },
+                    { text: "when they make", correct: false }
+                ],
+                explanation: {
+                    translation: "Họ đã chỉ cho chúng tôi cách họ may/làm ra các trang phục truyền thống và cho chúng tôi thử các món ăn tự làm thơm ngon.",
+                    optionsDict: [
+                        "A. what they make (cái gì họ làm)",
+                        "B. how they make (cách thức họ làm ra)",
+                        "C. why they make (tại sao họ làm)",
+                        "D. when they make (khi nào họ làm)"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì cụm 'show us HOW they make...' có nghĩa là hướng dẫn/cho xem quy trình và cách thức người dân làm trang phục.",
+                    whyIncorrect: "A, C, D không thể hiện được trải nghiệm tìm hiểu cách thức thực hành văn hóa của người dân."
+                }
+            },
+            // Question 22
+            {
+                type: "READING CLOZE - DETERMINERS",
+                question: "Question 22. The water was calm, and we saw (22)________ birds and animals along the way.",
+                options: [
+                    { text: "a little", correct: false },
+                    { text: "a lot", correct: false },
+                    { text: "much", correct: false },
+                    { text: "many", correct: true }
+                ],
+                explanation: {
+                    translation: "Nước sông rất êm đềm, và chúng tôi đã nhìn thấy nhiều loài chim và động vật dọc đường đi.",
+                    optionsDict: [
+                        "A. a little (đi với danh từ không đếm được)",
+                        "B. a lot (thiếu giới từ 'of')",
+                        "C. much (đi với danh từ không đếm được)",
+                        "D. many (đi với danh từ đếm được số nhiều)"
+                    ],
+                    whyCorrect: "Đáp án D đúng vì 'birds and animals' là danh từ đếm được số nhiều, lượng từ phù hợp nhất đứng trực tiếp trước danh từ là 'many'.",
+                    whyIncorrect: "A và C dùng cho danh từ không đếm được; B thiếu từ 'of' (a lot of)."
+                }
+            },
+            // Question 23
+            {
+                type: "READING CLOZE - PREPOSITIONS",
+                question: "Question 23. The experience was not only fun but also educational, as we learned (23)________ the history and traditions of the region.",
+                options: [
+                    { text: "about", correct: true },
+                    { text: "at", correct: false },
+                    { text: "in", correct: false },
+                    { text: "on", correct: false }
+                ],
+                explanation: {
+                    translation: "Trải nghiệm này không chỉ vui mà còn mang tính giáo dục, vì chúng tôi đã học hỏi/tìm hiểu về lịch sử và truyền thống của vùng đất này.",
+                    optionsDict: [
+                        "A. about (prep): về (learn about = tìm hiểu về cái gì)",
+                        "B. at (prep): tại",
+                        "C. in (prep): trong",
+                        "D. on (prep): trên"
+                    ],
+                    whyCorrect: "Đáp án A đúng vì đi kèm động từ 'learn' chỉ sự tìm hiểu kiến thức ta dùng giới từ 'learn about something'.",
+                    whyIncorrect: "B, C, D sai giới từ đi kèm với động từ 'learn'."
+                }
+            },
+            // Question 24
+            {
+                type: "READING CLOZE - NOUNS",
+                question: "Question 24. We left with a sense of gratitude and (24)________ for the wonderful people we met and the beautiful places we explored.",
+                options: [
+                    { text: "appetiser", correct: false },
+                    { text: "appreciation", correct: true },
+                    { text: "application", correct: false },
+                    { text: "allocation", correct: false }
+                ],
+                explanation: {
+                    translation: "Chúng tôi ra về với một sự biết ơn và sự trân trọng dành cho những con người tuyệt vời mà chúng tôi đã gặp và những địa điểm đẹp đẽ mà chúng tôi đã khám phá.",
+                    optionsDict: [
+                        "A. appetiser (n): món khai vị",
+                        "B. appreciation (n): sự trân trọng, đánh giá cao",
+                        "C. application (n): đơn xin, ứng dụng",
+                        "D. allocation (n): sự phân bổ"
+                    ],
+                    whyCorrect: "Đáp án B đúng vì cụm song song 'a sense of gratitude and appreciation' nghĩa là 'lòng biết ơn và sự trân trọng sâu sắc'.",
+                    whyIncorrect: "A, C, D hoàn toàn không phù hợp về ý nghĩa tình cảm lưu luyến sau chuyến du lịch."
+                }
+            }
+        ];
+
+        let questions = [];
+
+        function shuffleArray(array) {
+            let cur = array.slice();
+            for (let i = cur.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cur[i], cur[j]] = [cur[j], cur[i]];
+            }
+            return cur;
+        }
+
+        function initQuiz() {
+            questions = rawQuestions.map(q => {
+                let shuffledOpts = shuffleArray(q.options);
+                return {
+                    ...q,
+                    shuffledOptions: shuffledOpts,
+                    userAnswerIndex: null
+                };
+            });
+            renderQuiz();
+        }
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            questions.forEach((q, idx) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+
+                const optionsHTML = q.shuffledOptions.map((opt, optIdx) => {
+                    const letters = ['A', 'B', 'C', 'D'];
+                    return `
+                        <button class="opt-btn" id="opt-${idx}-${optIdx}" onclick="selectAnswer(${idx}, ${optIdx})">
+                            <span class="opt-prefix">${letters[optIdx]}</span>
+                            <span>${opt.text}</span>
+                        </button>
+                    `;
+                }).join('');
+
+                const exp = q.explanation;
+                const expDictHTML = exp.optionsDict.map(item => `<li>${item}</li>`).join('');
+
+                card.innerHTML = `
+                    <div class="q-header">
+                        <span class="q-number">Câu ${idx + 1} / ${questions.length}</span>
+                        <span class="q-type">${q.type}</span>
+                    </div>
+                    <div class="q-text">${q.question}</div>
+                    <div class="options-grid">
+                        ${optionsHTML}
+                    </div>
+                    <div class="explanation-box" id="exp-${idx}">
+                        <div class="exp-head">💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG:</div>
+                        <div class="exp-section"><strong>1. Dịch câu hỏi:</strong> ${exp.translation}</div>
+                        <div class="exp-section">
+                            <strong>2. Phân tích 4 đáp án:</strong>
+                            <ul class="exp-list">${expDictHTML}</ul>
+                        </div>
+                        <div class="exp-section"><strong>3. Tại sao chọn đáp án này?</strong> ${exp.whyCorrect}</div>
+                        <div class="exp-section"><strong>4. Tại sao các đáp án khác sai?</strong> ${exp.whyIncorrect}</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function selectAnswer(qIdx, optIdx) {
+            const q = questions[qIdx];
+            if (q.userAnswerIndex !== null) return;
+
+            q.userAnswerIndex = optIdx;
+            const selectedOpt = q.shuffledOptions[optIdx];
+            const isCorrect = selectedOpt.correct;
+
+            const selectedBtn = document.getElementById(`opt-${qIdx}-${optIdx}`);
+
+            if (isCorrect) {
+                selectedBtn.classList.add('correct');
+                playSound('correct');
+                triggerConfetti();
+            } else {
+                selectedBtn.classList.add('wrong');
+                playSound('wrong');
+
+                q.shuffledOptions.forEach((o, i) => {
+                    if (o.correct) {
+                        document.getElementById(`opt-${qIdx}-${i}`).classList.add('correct');
+                    }
+                });
+            }
+
+            q.shuffledOptions.forEach((_, i) => {
+                const b = document.getElementById(`opt-${qIdx}-${i}`);
+                b.disabled = true;
+                b.style.cursor = 'default';
+            });
+
+            document.getElementById(`exp-${qIdx}`).classList.add('show');
+        }
+
+        function submitQuiz() {
+            let correctCount = 0;
+
+            questions.forEach(q => {
+                if (q.userAnswerIndex !== null && q.shuffledOptions[q.userAnswerIndex].correct) {
+                    correctCount++;
+                }
+            });
+
+            const total = questions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('score-text').innerText = `${correctCount} / ${total} (${percentage}%)`;
+
+            let comment = "";
+            if (percentage < 50) {
+                comment = "Điểm lần này chưa cao lắm, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else if (percentage <= 80) {
+                comment = "Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kỹ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+            } else {
+                comment = "Làm tốt lắm, con cố gắng rinh điểm 10 ở lần sau nha!";
+                triggerConfetti();
+            }
+
+            document.getElementById('comment-text').innerText = comment;
+            document.getElementById('result-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('result-modal').style.display = 'none';
+        }
+
+        function triggerConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#8854C0', '#FDCB6E', '#00C9A7', '#FF7675', '#6C5CE7', '#00D26A'];
+
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 14,
+                    vy: (Math.random() - 0.7) * 14,
+                    size: Math.random() * 8 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    life: 90
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+
+                particles.forEach(p => {
+                    if (p.life > 0) {
+                        alive = true;
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vy += 0.4;
+                        p.life -= 2;
+                        ctx.fillStyle = p.color;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                });
+
+                if (alive) requestAnimationFrame(animate);
+                else ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            animate();
+        }
+
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>
